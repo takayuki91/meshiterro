@@ -3,8 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # サインイン後にAboutページへ遷移するよう設定
+   # def after_sign_in_path_for(resource)
+    # about_path
+  # サインイン後にindexページへ遷移するよう設定
    def after_sign_in_path_for(resource)
-    about_path
+    post_images_path
    end
 
   # サインアウト後にAboutページへ遷移するよう設定
