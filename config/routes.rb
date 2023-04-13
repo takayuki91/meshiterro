@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # 自動生成されたpost_imagesコントローラーのルーティングの記述を変更
   # resourcesメソッドを限定
   resources :post_images, only: [:new, :create, :index, :show, :destroy]
+  
+  # usersコントローラのアクションをresourcesメソッドで限定
+  resources :users, only: [:show, :edit, :update]
 
   get 'homes/about' => 'homes#about', as: 'about'
 
