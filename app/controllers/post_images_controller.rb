@@ -21,6 +21,8 @@ class PostImagesController < ApplicationController
   # 詳細画面で表示する特定idを格納させるshowアクションメソッド
   def show
     @post_image = PostImage.find(params[:id])
+    # コメントを投稿するためのインスタンス変数
+    @post_comment = PostComment.new
   end
 
   # 投稿削除のdestroyアクションメソッド

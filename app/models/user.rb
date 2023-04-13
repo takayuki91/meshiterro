@@ -5,7 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   # 1:Nの1側のモデルにhas_manyメソッドを記述
+  # Userモデル:PostImageモデル=1:N
   has_many :post_images, dependent: :destroy
+  # Userモデル:PostCommentモデル=1:N
+  has_many :post_comments, dependent: :destroy
+  #関連づけ
+  has_many :favorites, dependent: :destroy
   
   # プロフィール画像を扱うための追記　ActiveStrageを使う
   has_one_attached :profile_image

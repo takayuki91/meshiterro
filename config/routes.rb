@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   
   # 自動生成されたpost_imagesコントローラーのルーティングの記述を変更
   # resourcesメソッドを限定
-  resources :post_images, only: [:new, :create, :index, :show, :destroy]
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]do
+    # いいね機能は単数
+     resource :favorites, only: [:create, :destroy]
+    # post_images（親）とpost_comments（子）を結びつけた（ネストした）
+    resources :post_comments, only: [:create, :destroy]
+  end
   
   # usersコントローラのアクションをresourcesメソッドで限定
   resources :users, only: [:show, :edit, :update]
