@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root to:"homes#top"
   
   # 自動生成されたpost_imagesコントローラーのルーティングの記述を変更
-  # resourcesメソッドをnew,index,showのみに限定
-  resources :post_images, only: [:new, :create, :index, :show]
+  # resourcesメソッドを限定
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
 
   get 'homes/about' => 'homes#about', as: 'about'
 
