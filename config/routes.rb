@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # resourcesメソッドを限定
   resources :post_images, only: [:new, :create, :index, :show, :destroy]do
     # いいね機能は単数
-     resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     # post_images（親）とpost_comments（子）を結びつけた（ネストした）
     resources :post_comments, only: [:create, :destroy]
   end
