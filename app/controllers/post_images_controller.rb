@@ -9,13 +9,18 @@ class PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
-    @post_image.save
-    redirect_to post_images_path
+    # バリデーション結果を検出
+    if @post_image.save
+      redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   #投稿一覧で表示するすべての画像を取得するためのindexアクションメソッド
+  # kaminariのメソッドを記述
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.page(params[:page])
   end
 
   # 詳細画面で表示する特定idを格納させるshowアクションメソッド

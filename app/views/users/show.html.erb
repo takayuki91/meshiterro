@@ -10,16 +10,21 @@
 </div>
 
 <!-- ユーザーの投稿一覧 -->
-<% @post_images.each do |post_image| %>
-<div>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= image_tag post_image.get_image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%= image_tag post_image.user.get_profile_image(100,100) %></p>
-  <p>ショップ名：<%= post_image.shop_name %></p>
-  <p>説明：<%= post_image.caption %></p>
-  <p>ユーザーネーム：<%= post_image.user.name %></p>
-  <!--コメント件数の表示を記述-->
-<p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
-</div>
-<% end %>
+<!--部分テンプレートファイル呼び出し-->
+<!--別フォルダにテンプレートがあるためpost_images/list-->
+<%= render 'post_images/list', post_images: @post_images %>
+
+<!--部分テンプレートのため切り取り-->
+<!--<%# @post_images.each do |post_image| %>-->
+<!--<div>-->
+<!--  <%#= link_to post_image_path(post_image.id) do %>-->
+<!--    <%#= image_tag post_image.get_image %>-->
+<!--  <%# end %>-->
+<!--  <p>投稿ユーザー画像：<%#= image_tag post_image.user.get_profile_image(100,100) %></p>-->
+<!--  <p>ショップ名：<%#= post_image.shop_name %></p>-->
+<!--  <p>説明：<%#= post_image.caption %></p>-->
+<!--  <p>ユーザーネーム：<%#= post_image.user.name %></p>-->
+<!--  コメント件数の表示を記述-->
+<!--<p><#%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>-->
+<!--</div>-->
+<!--<%# end %>-->
